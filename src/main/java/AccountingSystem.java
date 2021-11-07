@@ -1,5 +1,6 @@
 import org.jetbrains.annotations.NotNull;
 
+import javax.lang.model.type.ArrayType;
 import java.net.HttpURLConnection;
 import java.util.*;
 
@@ -38,6 +39,23 @@ public class AccountingSystem {
         House house = new House(number);
         houses.add(house);
         System.out.println("House added successfully");
+    }
+
+    public void addHouseAutomatically() {
+       int number =(int)(1 + Math.random()*30);
+        for (House i : houses) {
+            if (i.getNumber() == number) {
+                System.out.println("A house with this number exists");
+                return;
+            }
+        }
+        House house = new House('a', number);
+        houses.add(house);
+        int  o = house.flatCount;
+        System.out.println("House added successfully");
+        for (int i = 0; i < o;i++) {
+            addFlatAutomatically(number);
+        }
     }
 
     public void addFlat(int numberOfHouse) {

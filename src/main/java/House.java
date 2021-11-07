@@ -16,6 +16,22 @@ public class House {
         this.number = input.nextInt();
         this.flatCount = input.nextInt();
         this.floorCount = input.nextInt();
+        System.out.println("House added successfully with options");
+        System.out.println("number -              " + this.number);
+        System.out.println("flat count -          " + this.flatCount);
+        System.out.println("floor count -         " + this.floorCount);
+
+    }
+
+    public House(char q, int number) {
+        this.number = number;
+        this.flatCount = (int)(1+Math.random()*5);
+        this.floorCount = (int)(1+Math.random()*24);
+        System.out.println("House added successfully with options");
+        System.out.println("number -              " + this.number);
+        System.out.println("flat count -          " + this.flatCount);
+        System.out.println("floor count -         " + this.floorCount);
+
     }
 
     public House(String s) {
@@ -29,6 +45,7 @@ public class House {
         this.flatCount = input.nextInt();
         this.floorCount = input.nextInt();
     }
+
 
     public Flat getFlat(int number) {
         for (Flat i : flats) {
