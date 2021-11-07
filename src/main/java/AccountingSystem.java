@@ -185,11 +185,7 @@ public class AccountingSystem {
             int index1 = 0;
             int index2 = 0;
             int index3 = 0;
-            System.out.println("Number of house:");
-            for (House value : house) {
-                System.out.print(value.getNumber() + " ");
-            }
-            System.out.println();
+            int index0 = 0;
             System.out.print("Enter the house number- ");
             int index11 = input.nextInt();;
             while (index11 <= 0) {
@@ -197,9 +193,11 @@ public class AccountingSystem {
                 index11 = input.nextInt();
             }
 
-            System.out.println("Apartment numbers in the house:");
-            for (int i = 0; i < house.get(index1 - 1).getNumber(); ++i) {
-                System.out.print(i + 1 + " ");
+            for (House i : house){
+                if (i.getNumber() == index11){
+                    break;
+                }
+                index0++;
             }
             System.out.print("\nEnter the apartment - ");
             index1 =  input.nextInt();
@@ -207,14 +205,14 @@ public class AccountingSystem {
 
             System.out.print("\nEnter a new area - ");
             index2 =  input.nextInt();
-            System.out.print("\nEnter the number of new tenants - ");
+            System.out.print("\nEnter the number of new residents - ");
             index3 =  input.nextInt();
 
-            house.get(index11 - 1).getFlat(index1).setSquare(index2);
-            house.get(index11 - 1).getFlat(index1).setResidents(index3);
+            house.get(index0).getFlat(index1).setSquare(index2);
+            house.get(index0).getFlat(index1).setResidents(index3);
 
-            house.get(index11 - 1).setSquare(house.get(index11 - 1).calcSquareOfHouse(house,index11));
-            house.get(index11 - 1).setResidents(house.get(index11 - 1).calcNumberOfResidents(house,index11));
+            house.get(index0).setSquare(house.get(index0).calcSquareOfHouse(house,index11));
+            house.get(index0).setResidents(house.get(index0 ).calcNumberOfResidents(house,index11));
         }
         else  System.out.println("empty\n");
     }
