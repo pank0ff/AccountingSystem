@@ -8,6 +8,8 @@ public class House {
     protected int number;
     protected int flatCount;
     protected int floorCount;
+    protected int square;
+    protected  int residents;
     public ArrayList<Flat> flats = new ArrayList<>();
 
     public House() {
@@ -104,12 +106,50 @@ public class House {
         System.out.println("     " + sign);
     }
 
+    public int calcSquareOfHouse(ArrayList<House> houses,int numberOfHouse){
+        double square = 0;
+        House house = new House();
+        for (House i: houses){
+            if (i.getNumber() ==numberOfHouse){ house = i;}
+        }
+        for(int i = 0; i < house.flatCount; ++i){
+            square += flats.get(i).getSquare();
+        }
+        return (int) square;
+    }
+    public int calcNumberOfResidents(ArrayList<House> houses,int numberOfHouse){
+        double residents = 0;
+        House house = new House();
+        for (House i: houses){
+            if (i.getNumber() ==numberOfHouse){ house = i;}
+        }
+        for(int i = 0; i < house.flatCount; ++i){
+            residents += flats.get(i).getResidents();
+        }
+        return (int) residents;
+    }
     public void removeFlat(Flat temp) {
         flats.remove(temp);
     }
 
     public void addFlat(Flat newFlat) {
         flats.add(newFlat);
+    }
+
+    public int getResidents() {
+        return residents;
+    }
+
+    public void setResidents(int residents) {
+        this.residents = residents;
+    }
+
+    public int getSquare() {
+        return square;
+    }
+
+    public void setSquare(int square) {
+        this.square = square;
     }
 
     public int getNumber() {
@@ -139,4 +179,6 @@ public class House {
     public void setFlat(ArrayList<Flat> flat) {
         this.flats = flat;
     }
+
+
 }
