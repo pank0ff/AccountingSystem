@@ -99,10 +99,10 @@ public class House {
         sign = getComparison(this.floorCount, house.floorCount);
         System.out.println("     " + sign);
 
-        int sqareOne = countSquare(this);
-        int sqareTwo = countSquare(house);
+        int squareOne = countSquare(this);
+        int squareTwo = countSquare(house);
         System.out.println("Total area");
-        sign = getComparison(sqareOne,sqareTwo);
+        sign = getComparison(squareOne,squareTwo);
         System.out.println("     " + sign);
     }
 

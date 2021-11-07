@@ -114,8 +114,10 @@ public class AccountingSystem {
         }
        int square = temp.calcSquareOfHouse( house, number);
         int numberOfResidents = temp.calcNumberOfResidents( house, number);
+        int countFloor = temp.floorCount;
         System.out.println("Total area of the house -  " + square);
         System.out.println("Total number of residents -  " + numberOfResidents);
+        System.out.println("Number of floors -  " + countFloor);
         if (temp.getFlat().size() == 0) {
             System.out.println("There are no flats in the house");
         }
