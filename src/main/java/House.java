@@ -8,7 +8,7 @@ public class House {
     private int number;
     private int flatCount;
     private int floorCount;
-    private ArrayList<Flat> flats = new ArrayList<Flat>();
+    private ArrayList<Flat> flats = new ArrayList<>();
 
     public House() {
         System.out.println("Enter house number, number of flats, number of floors");
@@ -21,7 +21,6 @@ public class House {
     public House(String s) {
 
     }
-
 
     public House(int number) {
         System.out.println("Enter the number of flats, number of floors");
@@ -40,13 +39,6 @@ public class House {
         Flat temp = new Flat("empty");
         temp.setNumber(-1);
         return temp;
-    }
-
-    public void printInfo() {
-        System.out.println("Information about the selected house:");
-        System.out.println("House number -" + this.number);
-        System.out.println("Number of flats- " + this.flatCount);
-        System.out.println("Number of floors - " + this.floorCount);
     }
 
     public static int countSquare(@NotNull House house) {
