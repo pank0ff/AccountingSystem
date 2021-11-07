@@ -8,7 +8,7 @@ public class House {
     protected int number;
     protected int flatCount;
     protected int floorCount;
-    private ArrayList<Flat> flats = new ArrayList<>();
+    public ArrayList<Flat> flats = new ArrayList<>();
 
     public House() {
         System.out.println("Enter house number, number of flats, number of floors");

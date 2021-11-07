@@ -42,7 +42,7 @@ public class AccountingSystem {
     }
 
     public void addHouseAutomatically() {
-       int number =(int)(1 + Math.random()*30);
+        int number = (int) (1 + Math.random() * 30);
         for (House i : houses) {
             if (i.getNumber() == number) {
                 System.out.println("A house with this number exists");
@@ -51,9 +51,9 @@ public class AccountingSystem {
         }
         House house = new House('a', number);
         houses.add(house);
-        int  o = house.flatCount;
+        int o = house.flatCount;
         System.out.println("House added successfully");
-        for (int i = 0; i < o;i++) {
+        for (int i = 0; i < o; i++) {
             addFlatAutomatically(number);
         }
     }
@@ -74,15 +74,17 @@ public class AccountingSystem {
         int number = 0;
         for (House i : houses) {
             if (i.getNumber() == numberOfHouse) {
-                 break;
+                break;
             }
             number++;
         }
-        House house = houses.get(number); ;
+        House house = houses.get(number);
+        ;
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no house with this number.");
         } else {
             Flat tempFlat = new Flat(house);
+            /* recurs(numberOfHouse,house,tempFlat);*/
             temp.addFlat(tempFlat);
             System.out.println("Flat added successfully");
         }
@@ -133,7 +135,7 @@ public class AccountingSystem {
         }
         Flat temp1 = findFlatByNumber(temp, numberOfApartment);
         if (temp1.getNumber() == -1) {
-                System.out.println("There is no such flat");
+            System.out.println("There is no such flat");
             return;
         }
         temp.removeFlat(temp1);
@@ -179,3 +181,4 @@ public class AccountingSystem {
         houseOne.compareBy(houseTwo);
     }
 }
+

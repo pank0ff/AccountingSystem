@@ -27,7 +27,7 @@ public class Flat {
     }
 
     public Flat(House house) {
-        this.number = (int)(1 + Math.random() * house.flatCount);
+        this.number = (int)(1 + Math.random() * 100);
         this.floor = (int)(1 + Math.random() * house.floorCount );
         this.square = (int)(1 + Math.random() * 30);
         this.countRooms = (int)(1 + Math.random() * 5);
