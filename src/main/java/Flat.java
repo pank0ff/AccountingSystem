@@ -40,16 +40,16 @@ public class Flat {
         System.out.println("Square :");
         String sign = this.getSign(this.square, flat.square);
         this.printCompareResult(sign, flat.number);
-        System.out.println("Number of residents");
+        System.out.println("Number of residents:");
         sign = this.getSign(this.residents, flat.residents);
         this.printCompareResult(sign, flat.number);
-        System.out.println("Number of rooms");
+        System.out.println("Number of rooms:");
         sign = this.getSign(this.countRooms, flat.countRooms);
         this.printCompareResult(sign, flat.number);
-        System.out.println("Flat number");
+        System.out.println("Flat number:");
         sign = this.getSign(this.number, flat.number);
         this.printCompareResult(sign, flat.number);
-        System.out.println("Floor");
+        System.out.println("Floor:");
         sign = this.getSign(this.floor, flat.floor);
         this.printCompareResult(sign, flat.number);
     }
