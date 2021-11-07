@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class House {
 
-    private int number;
-    private int flatCount;
-    private int floorCount;
+    protected int number;
+    protected int flatCount;
+    protected int floorCount;
     private ArrayList<Flat> flats = new ArrayList<>();
 
     public House() {
@@ -20,7 +20,7 @@ public class House {
 
     public House(String s) {
 
-    }
+     }
 
     public House(int number) {
         System.out.println("Enter the number of flats, number of floors");

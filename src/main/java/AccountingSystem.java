@@ -1,9 +1,10 @@
 import org.jetbrains.annotations.NotNull;
 
+import java.net.HttpURLConnection;
 import java.util.*;
 
 public class AccountingSystem {
-    private final ArrayList<House> houses = new ArrayList<>();
+    public final ArrayList<House> houses = new ArrayList<>();
 
     public House findHouseByNumber(int number) {
         for (House i : houses) {
@@ -39,12 +40,31 @@ public class AccountingSystem {
         System.out.println("House added successfully");
     }
 
-    public void addFlat(int numberOfHome) {
-        House temp = findHouseByNumber(numberOfHome);
+    public void addFlat(int numberOfHouse) {
+        House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no house with this number.");
         } else {
             Flat tempFlat = new Flat();
+            temp.addFlat(tempFlat);
+            System.out.println("in " + numberOfHouse + " house");
+        }
+    }
+
+    public void addFlatAutomatically(int numberOfHouse) {
+        House temp = findHouseByNumber(numberOfHouse);
+        int number = 0;
+        for (House i : houses) {
+            if (i.getNumber() == numberOfHouse) {
+                 break;
+            }
+            number++;
+        }
+        House house = houses.get(number); ;
+        if (temp.getFlatCount() == -1) {
+            System.out.println("There is no house with this number.");
+        } else {
+            Flat tempFlat = new Flat(house);
             temp.addFlat(tempFlat);
             System.out.println("Flat added successfully");
         }

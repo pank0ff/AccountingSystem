@@ -1,6 +1,7 @@
 import java.util.Objects;
 import java.util.Scanner;
 import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
 
 public class Flat {
     private int square;
@@ -17,6 +18,28 @@ public class Flat {
         this.square = input.nextInt();
         this.countRooms = input.nextInt();
         this.residents = input.nextInt();
+        System.out.println("Flat added successfully with options");
+        System.out.println("number -              " + this.number);
+        System.out.println("floor -               " + this.floor);
+        System.out.println("square -              " + this.square);
+        System.out.println("count of rooms -      "  + this.countRooms);
+        System.out.println("residents -           " + this.residents );
+    }
+
+    public Flat(House house) {
+        this.number = (int)(1 + Math.random() * house.flatCount);
+        this.floor = (int)(1 + Math.random() * house.floorCount );
+        this.square = (int)(1 + Math.random() * 30);
+        this.countRooms = (int)(1 + Math.random() * 5);
+        this.residents = (int)(1 + Math.random() * 5);
+
+        System.out.println("Flat added successfully with options");
+        System.out.println("number -            " + this.number);
+        System.out.println("floor -             " + this.floor);
+        System.out.println("square -            " + this.square);
+        System.out.println("count of rooms -    "  + this.countRooms);
+        System.out.println("residents -         " + this.residents );
+
     }
 
     Flat(String empty) {
