@@ -23,16 +23,12 @@ public class Flat {
     }
 
     public String getSign(int x, int y) {
-        switch(Integer.compare(x, y)) {
-            case -1:
-                return "<";
-            case 0:
-                return "=";
-            case 1:
-                return ">";
-            default:
-                return "";
-        }
+        return switch (Integer.compare(x, y)) {
+            case -1 -> "<";
+            case 0 -> "=";
+            case 1 -> ">";
+            default -> "";
+        };
     }
 
     public void printCompareResult(String sign, int flatNumber) {
@@ -116,6 +112,6 @@ public class Flat {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(new Object[]{this.square, this.residents, this.countRooms});
+        return Objects.hash(this.square, this.residents, this.countRooms);
     }
 }
