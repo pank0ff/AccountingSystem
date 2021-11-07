@@ -103,6 +103,7 @@ public class Flat {
         return this.floor;
     }
 
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -113,7 +114,7 @@ public class Flat {
             return false;
         }
     }
-
+    @Override
     public int hashCode() {
         return Objects.hash(new Object[]{this.square, this.residents, this.countRooms});
     }
