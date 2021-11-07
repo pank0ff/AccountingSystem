@@ -1,12 +1,13 @@
 import java.util.Objects;
 import java.util.Scanner;
+import org.jetbrains.annotations.NotNull;
 
 public class Flat {
-    private int square;  // площадь
-    private int residents; // количество жильцов
-    private int countRooms; // количество комнат
-    private int number; // номер квартиры
-    private int floor; // этаж
+    private int square;
+    private int residents;
+    private int countRooms;
+    private int number;
+    private int floor;
 
     public Flat() {
         Scanner input = new Scanner(System.in);
@@ -22,50 +23,39 @@ public class Flat {
     }
 
     public String getSign(int x, int y) {
-
-        switch (Integer.compare(x, y)) {
-            case 1 -> {
-                return ">";
-            }
-            case 0 -> {
-                return "=";
-            }
-            case -1 -> {
+        switch(Integer.compare(x, y)) {
+            case -1:
                 return "<";
-            }
-
+            case 0:
+                return "=";
+            case 1:
+                return ">";
+            default:
+                return "";
         }
-        return "";
     }
 
     public void printCompareResult(String sign, int flatNumber) {
         System.out.println("flat" + this.number + sign + "flat" + flatNumber);
     }
 
-    public void compareBy(@org.jetbrains.annotations.NotNull Flat flat) {
-
-        String sign = new String("");
-
+    public void compareBy(@NotNull Flat flat) {
+        new String("");
         System.out.println("Square :");
-        sign = getSign(this.square, flat.square);
-        printCompareResult(sign, flat.number);
-
+        String sign = this.getSign(this.square, flat.square);
+        this.printCompareResult(sign, flat.number);
         System.out.println("Number of residents");
-        sign = getSign(this.residents, flat.residents);
-        printCompareResult(sign, flat.number);
-
+        sign = this.getSign(this.residents, flat.residents);
+        this.printCompareResult(sign, flat.number);
         System.out.println("Number of rooms");
-        sign = getSign(this.countRooms, flat.countRooms);
-        printCompareResult(sign, flat.number);
-
+        sign = this.getSign(this.countRooms, flat.countRooms);
+        this.printCompareResult(sign, flat.number);
         System.out.println("Flat number");
-        sign = getSign(this.number, flat.number);
-        printCompareResult(sign, flat.number);
-
+        sign = this.getSign(this.number, flat.number);
+        this.printCompareResult(sign, flat.number);
         System.out.println("Floor");
-        sign = getSign(this.floor, flat.floor);
-        printCompareResult(sign, flat.number);
-
+        sign = this.getSign(this.floor, flat.floor);
+        this.printCompareResult(sign, flat.number);
     }
 
     public void printInfo() {
@@ -78,7 +68,7 @@ public class Flat {
     }
 
     public int getSquare() {
-        return square;
+        return this.square;
     }
 
     public void setSquare(int square) {
@@ -86,7 +76,7 @@ public class Flat {
     }
 
     public int getResidents() {
-        return residents;
+        return this.residents;
     }
 
     public void setResidents(int roomer) {
@@ -94,7 +84,7 @@ public class Flat {
     }
 
     public int getCountRooms() {
-        return countRooms;
+        return this.countRooms;
     }
 
     public void setCountRooms(int countRooms) {
@@ -102,7 +92,7 @@ public class Flat {
     }
 
     public int getNumber() {
-        return number;
+        return this.number;
     }
 
     public void setNumber(int number) {
@@ -110,19 +100,21 @@ public class Flat {
     }
 
     public int getFloor() {
-        return floor;
+        return this.floor;
     }
 
-    @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Flat flat = (Flat) o;
-        return square == flat.square && residents == flat.residents && countRooms == flat.countRooms;
+        if (this == o) {
+            return true;
+        } else if (o != null && this.getClass() == o.getClass()) {
+            Flat flat = (Flat)o;
+            return this.square == flat.square && this.residents == flat.residents && this.countRooms == flat.countRooms;
+        } else {
+            return false;
+        }
     }
 
-    @Override
     public int hashCode() {
-        return Objects.hash(square, residents, countRooms);
+        return Objects.hash(new Object[]{this.square, this.residents, this.countRooms});
     }
 }
