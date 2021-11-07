@@ -3,7 +3,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 public class AccountingSystem {
-    private final ArrayList<House> houses = new ArrayList<House>();
+    private final ArrayList<House> houses = new ArrayList<>();
 
     public House findHouseByNumber(int number) {
         for (House i : houses) {
@@ -43,7 +43,6 @@ public class AccountingSystem {
         House temp = findHouseByNumber(numberOfHome);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no house with this number.");
-            return;
         } else {
             Flat tempFlat = new Flat();
             temp.addFlat(tempFlat);
