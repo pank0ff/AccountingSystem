@@ -86,7 +86,6 @@ public class Main {
                 case 12 -> {
                     isAllGood = false;
                 }
-                default -> throw new IllegalStateException("Unexpected value: " + numberOfYourChoice);
             }
         }
     }

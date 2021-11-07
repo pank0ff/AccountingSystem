@@ -112,6 +112,10 @@ public class AccountingSystem {
         for (Flat i : temp.getFlat()) {
             i.printInfo();
         }
+       int square = temp.calcSquareOfHouse( house, number);
+        int numberOfResidents = temp.calcNumberOfResidents( house, number);
+        System.out.println("Total area of the house -  " + square);
+        System.out.println("Total number of residents -  " + numberOfResidents);
         if (temp.getFlat().size() == 0) {
             System.out.println("There are no flats in the house");
         }

@@ -108,7 +108,7 @@ public class House {
 
     public int calcSquareOfHouse(ArrayList<House> houses,int numberOfHouse){
         double square = 0;
-        House house = new House();
+        House house = null;
         for (House i: houses){
             if (i.getNumber() ==numberOfHouse){ house = i;}
         }
@@ -119,7 +119,7 @@ public class House {
     }
     public int calcNumberOfResidents(ArrayList<House> houses,int numberOfHouse){
         double residents = 0;
-        House house = new House();
+        House house = null;
         for (House i: houses){
             if (i.getNumber() ==numberOfHouse){ house = i;}
         }
