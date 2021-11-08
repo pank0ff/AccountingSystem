@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -31,7 +30,7 @@ public class Main {
                     case 1 -> {
                         System.out.println("enter house number,please :)");
                         int number = input.nextInt();
-                        accountingSystem.addHouse(number);
+                        accountingSystem.addEmptyHouse(number);
 
                     }
                     case 2 -> {

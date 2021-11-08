@@ -17,32 +17,32 @@ public class AccountingSystem {
         return temp;
     }
 
-    public void addHouse(int number) {
+    public void addEmptyHouse(int numberOfHouse) {
         for (House i : house) {
-            if (i.getNumber() == number) {
+            if (i.getNumber() == numberOfHouse) {
                 System.out.println("A house with this number exists :(");
                 return;
             }
         }
-        House house = new House(number);
+        House house = new House(numberOfHouse);
         this.house.add(house);
         System.out.println("House added successfully :)");
     }
 
     public void addHouseAutomatically() {
-        int number = (int) (1 + Math.random() * 30);
+        int numberOfHouse = (int) (1 + Math.random() * 30);
         for (House i : house) {
-            if (i.getNumber() == number) {
+            if (i.getNumber() == numberOfHouse) {
                 System.out.println("A house with this number exists :(");
                 return;
             }
         }
-        House house = new House('a', number);
+        House house = new House('a', numberOfHouse);
         this.house.add(house);
         int o = house.flatCount;
         System.out.println("House added successfully :)");
         for (int i = 0; i < o; i++) {
-            addFlatAutomatically(number);
+            addFlatAutomatically(numberOfHouse);
         }
     }
 
@@ -78,8 +78,8 @@ public class AccountingSystem {
         }
     }
 
-    public void removeHouse(int number) {
-        House temp = findHouseByNumber(number);
+    public void removeHouse(int numberOfHouse) {
+        House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no such house :(");
             return;
@@ -87,13 +87,13 @@ public class AccountingSystem {
         house.remove(temp);
     }
 
-    public void removeFlat(int numberOfHome, int numberOfApartment) {
-        House temp = findHouseByNumber(numberOfHome);
+    public void removeFlat(int numberOfHouse, int numberOfFlat) {
+        House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no such house :(");
             return;
         }
-        Flat temp1 = findFlatByNumber(temp, numberOfApartment);
+        Flat temp1 = findFlatByNumber(temp, numberOfFlat);
         if (temp1.getNumber() == -1) {
             System.out.println("There is no such flat :(");
             return;
@@ -177,9 +177,9 @@ public class AccountingSystem {
        int square = temp.calcSquareOfHouse( house, number);
         int numberOfResidents = temp.calcNumberOfResidents( house, number);
         int countFloor = temp.floorCount;
-        System.out.println("Total area of the house -  " + square);
-        System.out.println("Total number of residents -  " + numberOfResidents);
-        System.out.println("Number of floors -  " + countFloor);
+        System.out.println("Total area of the house    " + square);
+        System.out.println("Total number of residents  " + numberOfResidents);
+        System.out.println("Number of floors           " + countFloor);
         if (temp.getFlat().size() == 0) {
             System.out.println("There are no flats in the house :(");
         }

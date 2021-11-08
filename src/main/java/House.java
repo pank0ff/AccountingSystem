@@ -19,9 +19,9 @@ public class House {
         this.flatCount = input.nextInt();
         this.floorCount = input.nextInt();
         System.out.println("House added successfully with options");
-        System.out.println("number -              " + this.number);
-        System.out.println("flat count -          " + this.flatCount);
-        System.out.println("floor count -         " + this.floorCount);
+        System.out.println("number              " + this.number);
+        System.out.println("flat count          " + this.flatCount);
+        System.out.println("floor count         " + this.floorCount);
 
     }
 
