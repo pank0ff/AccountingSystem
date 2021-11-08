@@ -12,11 +12,15 @@ public class Flat {
 
     public Flat() {
         Scanner input = new Scanner(System.in);
-        System.out.println("enter flat number, floor, area, number of rooms, number of residents, \n");
+       System.out.println("Enter flat number,please :)");
         this.number = input.nextInt();
+        System.out.println("Enter floor number,please :)");
         this.floor = input.nextInt();
+        System.out.println("Enter square,please :)");
         this.square = input.nextInt();
+        System.out.println("Enter count of rooms,please :)");
         this.countRooms = input.nextInt();
+        System.out.println("Enter count of residents,please :)");
         this.residents = input.nextInt();
         System.out.println("Flat added successfully with options");
         System.out.println("number              " + this.number);
@@ -79,11 +83,11 @@ public class Flat {
 
     public void printInfo() {
         System.out.println("Information about the flat:");
-        System.out.println("room              - " + this.getNumber());
-        System.out.println("square            - " + this.getSquare());
-        System.out.println("number of residents - " + this.getResidents());
-        System.out.println("number of rooms  - " + this.getCountRooms());
-        System.out.println("floor               - " + this.getFloor());
+        System.out.println("room                 " + this.getNumber());
+        System.out.println("square               " + this.getSquare());
+        System.out.println("number of residents  " + this.getResidents());
+        System.out.println("number of rooms      " + this.getCountRooms());
+        System.out.println("floor                " + this.getFloor());
     }
 
     public int getSquare() {

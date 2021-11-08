@@ -41,10 +41,12 @@ public class House {
      }
 
     public House(int number) {
-        System.out.println("Enter the number of flats, number of floors,please :)");
+        System.out.println("Enter the number of house,please :)");
         this.number = number;
         Scanner input = new Scanner(System.in);
+        System.out.println("Enter count of flats,please :)");
         this.flatCount = input.nextInt();
+        System.out.println("Enter count of floor,please :)");
         this.floorCount = input.nextInt();
     }
 
