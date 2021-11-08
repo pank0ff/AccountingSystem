@@ -19,11 +19,11 @@ public class Flat {
         this.countRooms = input.nextInt();
         this.residents = input.nextInt();
         System.out.println("Flat added successfully with options");
-        System.out.println("number -              " + this.number);
-        System.out.println("floor -               " + this.floor);
-        System.out.println("square -              " + this.square);
-        System.out.println("count of rooms -      "  + this.countRooms);
-        System.out.println("residents -           " + this.residents );
+        System.out.println("number              " + this.number);
+        System.out.println("floor               " + this.floor);
+        System.out.println("square              " + this.square);
+        System.out.println("count of rooms      "  + this.countRooms);
+        System.out.println("residents           " + this.residents );
     }
 
     public Flat(House house) {
@@ -34,11 +34,11 @@ public class Flat {
         this.residents = (int)(1 + Math.random() * 5);
 
         System.out.println("Flat added successfully with options");
-        System.out.println("number -            " + this.number);
-        System.out.println("floor -             " + this.floor);
-        System.out.println("square -            " + this.square);
-        System.out.println("count of rooms -    "  + this.countRooms);
-        System.out.println("residents -         " + this.residents );
+        System.out.println("number            " + this.number);
+        System.out.println("floor             " + this.floor);
+        System.out.println("square            " + this.square);
+        System.out.println("count of rooms    "  + this.countRooms);
+        System.out.println("residents         " + this.residents );
 
     }
 

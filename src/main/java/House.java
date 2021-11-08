@@ -13,7 +13,7 @@ public class House {
     public ArrayList<Flat> flats = new ArrayList<>();
 
     public House() {
-        System.out.println("Enter house number, number of flats, number of floors");
+        System.out.println("Enter house number, number of flats, number of floors,please :)");
         Scanner input = new Scanner(System.in);
         this.number = input.nextInt();
         this.flatCount = input.nextInt();
@@ -30,9 +30,9 @@ public class House {
         this.flatCount = (int)(1+Math.random()*5);
         this.floorCount = (int)(1+Math.random()*24);
         System.out.println("House added successfully with options");
-        System.out.println("number -              " + this.number);
-        System.out.println("flat count -          " + this.flatCount);
-        System.out.println("floor count -         " + this.floorCount);
+        System.out.println("number             " + this.number);
+        System.out.println("flat count         " + this.flatCount);
+        System.out.println("floor count        " + this.floorCount);
 
     }
 
@@ -41,7 +41,7 @@ public class House {
      }
 
     public House(int number) {
-        System.out.println("Enter the number of flats, number of floors");
+        System.out.println("Enter the number of flats, number of floors,please :)");
         this.number = number;
         Scanner input = new Scanner(System.in);
         this.flatCount = input.nextInt();
@@ -83,6 +83,29 @@ public class House {
         return "";
     }
 
+    public int calcSquareOfHouse(ArrayList<House> houses,int numberOfHouse){
+        double square = 0;
+        House house = null;
+        for (House i: houses){
+            if (i.getNumber() ==numberOfHouse){ house = i;}
+        }
+        for(int i = 0; i < house.flatCount; ++i){
+            square += flats.get(i).getSquare();
+        }
+        return (int) square;
+    }
+    public int calcNumberOfResidents(ArrayList<House> houses,int numberOfHouse){
+        double residents = 0;
+        House house = null;
+        for (House i: houses){
+            if (i.getNumber() ==numberOfHouse){ house = i;}
+        }
+        for(int i = 0; i < house.flatCount; ++i){
+            residents += flats.get(i).getResidents();
+        }
+        return (int) residents;
+    }
+
     public void compareBy(@NotNull House house) {
         System.out.println("House№1      House№2");
         String sign = new String("");
@@ -106,28 +129,6 @@ public class House {
         System.out.println("     " + sign);
     }
 
-    public int calcSquareOfHouse(ArrayList<House> houses,int numberOfHouse){
-        double square = 0;
-        House house = null;
-        for (House i: houses){
-            if (i.getNumber() ==numberOfHouse){ house = i;}
-        }
-        for(int i = 0; i < house.flatCount; ++i){
-            square += flats.get(i).getSquare();
-        }
-        return (int) square;
-    }
-    public int calcNumberOfResidents(ArrayList<House> houses,int numberOfHouse){
-        double residents = 0;
-        House house = null;
-        for (House i: houses){
-            if (i.getNumber() ==numberOfHouse){ house = i;}
-        }
-        for(int i = 0; i < house.flatCount; ++i){
-            residents += flats.get(i).getResidents();
-        }
-        return (int) residents;
-    }
     public void removeFlat(Flat temp) {
         flats.remove(temp);
     }
