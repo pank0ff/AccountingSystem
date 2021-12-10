@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static builders.FlatBuilder.*;
+
+import static builders.HouseBuilder.*;
+
 public class House {
 
     public int number;
@@ -33,7 +37,7 @@ public class House {
                 return i;
             }
         }
-        Flat temp = new Flat();
+        Flat temp = flatEmpty();
         temp.setNumber(-1);
         return temp;
     }
