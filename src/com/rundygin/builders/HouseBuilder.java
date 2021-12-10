@@ -13,8 +13,6 @@ public class HouseBuilder {
     protected  int residents;
     protected ArrayList<Flat> flats = new ArrayList<>();
 
-    public void getNumber(int number){this.number =number;}
-
     public void setResidents(int residents) {
         this.residents = residents;
     }
