@@ -11,47 +11,20 @@ public class House {
     public int number;
     public int flatCount;
     public int floorCount;
-    public ArrayList<House> house;
     protected int square;
     protected  int residents;
     protected ArrayList<Flat> flats = new ArrayList<>();
 
-    public House() {
-        System.out.println("Enter house number, number of flats, number of floors,please :)");
-        Scanner input = new Scanner(System.in);
-        this.number = input.nextInt();
-        this.flatCount = input.nextInt();
-        this.floorCount = input.nextInt();
+    public House(){
+     }
+    public House(int number, int flatCount, int floorCount) {
+        this.number = number;
+        this.flatCount = flatCount;
+        this.floorCount = floorCount;
         System.out.println("House added successfully with options");
         System.out.println("number              " + this.number);
         System.out.println("flat count          " + this.flatCount);
         System.out.println("floor count         " + this.floorCount);
-
-    }
-
-    public House(char q, int number) {
-        this.number = number;
-        this.flatCount = (int)(1+Math.random()*5);
-        this.floorCount = (int)(1+Math.random()*24);
-        System.out.println("House added successfully with options");
-        System.out.println("number             " + this.number);
-        System.out.println("flat count         " + this.flatCount);
-        System.out.println("floor count        " + this.floorCount);
-
-    }
-
-    public House(String s) {
-
-    }
-
-    public House(int number) {
-        System.out.println("Enter the number of house,please :)");
-        this.number = number;
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter count of flats,please :)");
-        this.flatCount = input.nextInt();
-        System.out.println("Enter count of floor,please :)");
-        this.floorCount = input.nextInt();
     }
 
     public Flat getFlat(int number) {
@@ -60,7 +33,7 @@ public class House {
                 return i;
             }
         }
-        Flat temp = new Flat("empty");
+        Flat temp = new Flat();
         temp.setNumber(-1);
         return temp;
     }

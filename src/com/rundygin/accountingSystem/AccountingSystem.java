@@ -1,4 +1,5 @@
 package accountingSystem;
+import builders.HouseBuilder;
 import model.Flat;
 import model.House;
 import org.jetbrains.annotations.NotNull;
@@ -7,6 +8,9 @@ import services.HouseService;
 
 import java.util.Scanner;
 import java.util.*;
+
+import static builders.FlatBuilder.*;
+import static builders.HouseBuilder.*;
 
 public class AccountingSystem {
     public final ArrayList<House> house = new ArrayList<>();
@@ -18,46 +22,43 @@ public class AccountingSystem {
                 return  i;
             }
         }
-        House temp = new House("empty :(");
-        temp.setFlatCount(-1);
-        return  temp;
+        HouseBuilder.houseEmpty().setFlatCount(-1);
+        return  HouseBuilder.houseEmpty();
     }
 
-    public void addEmptyHouse(int numberOfHouse) {
+    public void addEmptyHouse(int numberOfHouse,int flatCount,int floorCount) {
         for (House i : this.house) {
             if (i.getNumber() == numberOfHouse) {
                 System.out.println("A house with this number exists :(");
                 return;
             }
         }
-        House house = new House(numberOfHouse);
+        House house = houseDefault(numberOfHouse,flatCount,floorCount);
         this.house.add(house);
         System.out.println("House added successfully :)");
     }
 
     public void addHouseAutomatically() {
-        int numberOfHouse = (int) (1 + Math.random() * 30);
+        int numberOfHouse = (int) (1 + Math.random() * 10+Math.random()*10+Math.random()*5);
         for (House i : this.house) {
             if (i.getNumber() == numberOfHouse) {
                 System.out.println("A house with this number exists :(");
                 return;
             }
         }
-        House house = new House('a', numberOfHouse);
+        House house = houseAuto(numberOfHouse);
         this.house.add(house);
-        int o = house.flatCount;
-        System.out.println("House added successfully :)");
-        for (int i = 0; i < o; i++) {
+        for (int i = 0; i <house.flatCount; i++) {
             addFlatAutomatically(numberOfHouse);
         }
     }
 
-    public void addFlat(int numberOfHouse) {
+    public void addFlat(int numberOfHouse,int square,int residents,int countRooms,int number,int floor) {
         House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no house with this number. :(");
         } else {
-            Flat tempFlat = new Flat();
+            Flat tempFlat = flatDefault(square, residents, countRooms, number, floor);
             temp.addFlat(tempFlat);
             System.out.println("in " + numberOfHouse + " house");
         }
@@ -77,7 +78,7 @@ public class AccountingSystem {
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no house with this number. :(");
         } else {
-            Flat tempFlat = new Flat(house);
+            Flat tempFlat = flatAuto(house);
             temp.addFlat(tempFlat);
             System.out.println("Flat added successfully :)");
         }
@@ -151,7 +152,7 @@ public class AccountingSystem {
                 return  i;
             }
         }
-        Flat temp = new Flat("empty :(");
+        Flat temp = new Flat();
         temp.setNumber(-1);
         return temp;
     }

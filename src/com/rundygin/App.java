@@ -31,13 +31,26 @@ public class App {
                     case 1 -> {
                         System.out.println("enter house number,please :)");
                         int number = input.nextInt();
-                        accountingSystem.addEmptyHouse(number);
+                        System.out.println("Enter number of flats, number of floors,please :)");
+                        int flatCount = input.nextInt();
+                        int floorCount = input.nextInt();
+                        accountingSystem.addEmptyHouse(number,flatCount,floorCount);
 
                     }
                     case 2 -> {
                         System.out.println("Enter the house number to which you want to add the flat,please :)");
                         int number = input.nextInt();
-                        accountingSystem.addFlat(number);
+                        System.out.println("Enter flat number,please :)");
+                        int flatNumber = input.nextInt();
+                        System.out.println("Enter floor number,please :)");
+                        int floor = input.nextInt();
+                        System.out.println("Enter square,please :)");
+                        int square = input.nextInt();
+                        System.out.println("Enter count of rooms,please :)");
+                        int countRooms = input.nextInt();
+                        System.out.println("Enter count of residents,please :)");
+                        int residents = input.nextInt();
+                        accountingSystem.addFlat(number,square, residents, countRooms, flatNumber, floor);
                     }
 
                     case 3 -> {
