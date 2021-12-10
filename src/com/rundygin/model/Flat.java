@@ -1,7 +1,5 @@
 package model;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -13,18 +11,14 @@ public class Flat {
     public int number;
     public int floor;
 
-    public Flat() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter flat number,please :)");
-        this.number = input.nextInt();
-        System.out.println("Enter floor number,please :)");
-        this.floor = input.nextInt();
-        System.out.println("Enter square,please :)");
-        this.square = input.nextInt();
-        System.out.println("Enter count of rooms,please :)");
-        this.countRooms = input.nextInt();
-        System.out.println("Enter count of residents,please :)");
-        this.residents = input.nextInt();
+    public Flat(){}
+
+    public Flat(int square, int residents, int countRooms, int number, int floor) {
+        this.number = number;
+        this.floor = floor;
+        this.square = square;
+        this.countRooms = countRooms ;
+        this.residents = residents;
         System.out.println("Flat added successfully with options");
         System.out.println("number              " + this.number);
         System.out.println("floor               " + this.floor);
@@ -32,26 +26,6 @@ public class Flat {
         System.out.println("count of rooms      " + this.countRooms);
         System.out.println("residents           " + this.residents);
     }
-
-    public Flat(House house) {
-        this.number = (int) (1 + Math.random() * 100);
-        this.floor = (int) (1 + Math.random() * house.floorCount);
-        this.square = (int) (1 + Math.random() * 30);
-        this.countRooms = (int) (1 + Math.random() * 5);
-        this.residents = (int) (1 + Math.random() * 5);
-
-        System.out.println("Flat added successfully with options");
-        System.out.println("number            " + this.number);
-        System.out.println("floor             " + this.floor);
-        System.out.println("square            " + this.square);
-        System.out.println("count of rooms    " + this.countRooms);
-        System.out.println("residents         " + this.residents);
-
-    }
-
-    public Flat(String empty) {
-    }
-
 
     public int getSquare() {
         return this.square;

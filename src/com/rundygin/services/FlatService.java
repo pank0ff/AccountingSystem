@@ -3,13 +3,8 @@ package services;
 import model.Flat;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
 public class FlatService extends model.Flat {
 
-   public FlatService( String empty){
-
-    }
     public static String getSign(int x, int y) {
         return switch (Integer.compare(x, y)) {
             case -1 -> "<";
