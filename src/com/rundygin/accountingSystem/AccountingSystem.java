@@ -93,7 +93,7 @@ public class AccountingSystem {
         house.remove(temp);
     }
 
-    public void removeFlat(int numberOfHouse, int numberOfFlat) {
+    public static void removeFlat(int numberOfHouse, int numberOfFlat) {
         House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no such house :(");
