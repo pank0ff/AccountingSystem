@@ -46,13 +46,6 @@ public class HouseServiceTest {
     }
 
     @Test
-    public  void addHouseAutomatically(){
-        AccountingSystem accountingSystem = new AccountingSystem();
-        accountingSystem.addHouseAutomatically();
-        assertEquals(1,accountingSystem.house.size());
-    }
-
-    @Test
     public  void addFlat(){
         House house = new House();
         Flat flat = new Flat();
