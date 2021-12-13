@@ -22,100 +22,103 @@ public class UserInterface {
                Press 13 if you want to leave us :((((
             """;
 
-    public void showMenu()
-    {
+    public void showMenu() {
         System.out.println(USER_MENU);
     }
-    public void handleQuery(){
+
+    public void handleQuery() {
         System.out.println("Hey! Press 1 if you want to see the functionality. Press 0 if you want to close the program.");
         boolean isAllGood = true;
         AccountingSystem accountingSystem = new AccountingSystem();
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();
-        switch (choice)
-        {
-            case  0 -> {System.out.println("Bye,Bye!");}
-            case  1 -> {
+        switch (choice) {
+            case 0 -> {
+                System.out.println("Bye,Bye!");
+            }
+            case 1 -> {
                 showMenu();
                 while (isAllGood) {
-                int numberOfYourChoice = input.nextInt();
-                switch (numberOfYourChoice) {
-                    case 1 -> {
-                        System.out.println("enter house number,please :)");
-                        int number = input.nextInt();
-                        System.out.println("Enter number of flats, number of floors,please :)");
-                        int flatCount = input.nextInt();
-                        int floorCount = input.nextInt();
-                        accountingSystem.addEmptyHouse(number,flatCount,floorCount);
+                    int numberOfYourChoice = input.nextInt();
+                    switch (numberOfYourChoice) {
+                        case 1 -> {
+                            System.out.println("enter house number,please :)");
+                            int number = input.nextInt();
+                            System.out.println("Enter number of flats, number of floors,please :)");
+                            int flatCount = input.nextInt();
+                            int floorCount = input.nextInt();
+                            accountingSystem.addEmptyHouse(number, flatCount, floorCount);
 
-                    }
-                    case 2 -> {
-                        System.out.println("Enter the house number to which you want to add the flat,please :)");
-                        int number = input.nextInt();
-                        System.out.println("Enter flat number,please :)");
-                        int flatNumber = input.nextInt();
-                        System.out.println("Enter floor number,please :)");
-                        int floor = input.nextInt();
-                        System.out.println("Enter square,please :)");
-                        int square = input.nextInt();
-                        System.out.println("Enter count of rooms,please :)");
-                        int countRooms = input.nextInt();
-                        System.out.println("Enter count of residents,please :)");
-                        int residents = input.nextInt();
-                        accountingSystem.addFlat(number,square, residents, countRooms, flatNumber, floor);
-                    }
+                        }
+                        case 2 -> {
+                            System.out.println("Enter the house number to which you want to add the flat,please :)");
+                            int number = input.nextInt();
+                            System.out.println("Enter flat number,please :)");
+                            int flatNumber = input.nextInt();
+                            System.out.println("Enter floor number,please :)");
+                            int floor = input.nextInt();
+                            System.out.println("Enter square,please :)");
+                            int square = input.nextInt();
+                            System.out.println("Enter count of rooms,please :)");
+                            int countRooms = input.nextInt();
+                            System.out.println("Enter count of residents,please :)");
+                            int residents = input.nextInt();
+                            accountingSystem.addFlat(number, square, residents, countRooms, flatNumber, floor);
+                        }
 
-                    case 3 -> {
-                        System.out.println("Enter the house number to which you want to add the flat,please :)");
-                        int number = input.nextInt();
-                        accountingSystem.addFlatAutomatically(number);
-                    }
+                        case 3 -> {
+                            System.out.println("Enter the house number to which you want to add the flat,please :)");
+                            int number = input.nextInt();
+                            accountingSystem.addFlatAutomatically(number);
+                        }
 
-                    case 4 -> {
-                        accountingSystem.addHouseAutomatically();
+                        case 4 -> {
+                            accountingSystem.addHouseAutomatically();
+                        }
+                        case 5 -> {
+                            accountingSystem.changeFlat();
+                        }
+                        case 6 -> {
+                            System.out.println("Enter house number,please :)");
+                            accountingSystem.removeHouse(input.nextInt());
+                        }
+                        case 7 -> {
+                            System.out.println("Enter the house and flat number,please :)");
+                            accountingSystem.removeFlat(input.nextInt(), input.nextInt());
+                        }
+                        case 8 -> {
+                            System.out.println("Enter the house number of the first house ,please :)");
+                            int numberOfHouseOne = input.nextInt();
+                            System.out.println("Enter the house number of the second house,please :)");
+                            int numberOfHouseTwo = input.nextInt();
+                            accountingSystem.compareHouse(numberOfHouseOne, numberOfHouseTwo);
+                        }
+                        case 9 -> {
+                            System.out.println("Enter the house and flat number,please :)");
+                            int numberOfHouse1 = input.nextInt();
+                            int numberOfFlat1 = input.nextInt();
+                            System.out.println("Enter the house and flat number,please :)");
+                            int numberOfHouse2 = input.nextInt();
+                            int numberOfFlat2 = input.nextInt();
+                            accountingSystem.compareFlat(numberOfHouse1, numberOfHouse2, numberOfFlat1, numberOfFlat2);
+                        }
+                        case 10 -> {
+                            System.out.println("Enter house number,please :)");
+                            accountingSystem.getHouseInformation(input.nextInt());
+                        }
+                        case 11 -> {
+                            System.out.println("Enter the house and flat number,please :)");
+                            accountingSystem.getFlatInformation(input.nextInt(), input.nextInt());
+                        }
+                        case 12 -> {
+                            showMenu();
+                        }
+                        case 13 -> {
+                            isAllGood = false;
+                        }
+                        default -> System.out.println("You entered a non-existent command, unfortunately, we cannot help you in any way :((((");
                     }
-                    case 5 -> {
-                        accountingSystem.changeFlat();
-                    }
-                    case 6 -> {
-                        System.out.println("Enter house number,please :)");
-                        accountingSystem.removeHouse(input.nextInt());
-                    }
-                    case 7 -> {
-                        System.out.println("Enter the house and flat number,please :)");
-                        accountingSystem.removeFlat(input.nextInt(),input.nextInt());
-                    }
-                    case 8 -> {
-                        System.out.println("Enter the house number of the first house ,please :)");
-                        int numberOfHouseOne = input.nextInt();
-                        System.out.println("Enter the house number of the second house,please :)");
-                        int numberOfHouseTwo = input.nextInt();
-                        accountingSystem.compareHouse(numberOfHouseOne,numberOfHouseTwo);
-                    }
-                    case 9 -> {
-                        System.out.println("Enter the house and flat number,please :)");
-                        int numberOfHouse1 = input.nextInt();
-                        int numberOfFlat1 = input.nextInt();
-                        System.out.println("Enter the house and flat number,please :)");
-                        int numberOfHouse2 = input.nextInt();
-                        int numberOfFlat2 = input.nextInt();
-                        accountingSystem.compareFlat(numberOfHouse1,numberOfHouse2,numberOfFlat1,numberOfFlat2);
-                    }
-                    case 10 -> {
-                        System.out.println("Enter house number,please :)");
-                        accountingSystem.getHouseInformation(input.nextInt());
-                    }
-                    case 11 -> {
-                        System.out.println("Enter the house and flat number,please :)");
-                        accountingSystem.getFlatInformation(input.nextInt(), input.nextInt());
-                    }
-                    case 12 ->{showMenu();}
-                    case 13-> {
-                        isAllGood = false;
-                    }
-                    default -> System.out.println("You entered a non-existent command, unfortunately, we cannot help you in any way :((((");
                 }
-            }
             }
             default -> System.out.println("You entered a non-existent command, unfortunately, we cannot help you in any way :((((");
         }

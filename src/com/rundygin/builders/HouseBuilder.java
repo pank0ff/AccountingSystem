@@ -10,7 +10,7 @@ public class HouseBuilder {
     public int flatCount;
     public int floorCount;
     protected int square;
-    protected  int residents;
+    protected int residents;
     protected ArrayList<Flat> flats = new ArrayList<>();
 
     public void setResidents(int residents) {
@@ -33,16 +33,17 @@ public class HouseBuilder {
         this.flats = flat;
     }
 
-    public static House houseDefault(int number, int flatCount, int floorCount ){
-        return new House(number,flatCount,floorCount);
+    public static House houseDefault(int number, int flatCount, int floorCount) {
+        return new House(number, flatCount, floorCount);
     }
 
     public static House houseAuto(int number1) {
-        int flatCount = (int)(1+Math.random()*5);
-        int floorCount = (int)(1+Math.random()*24);
-        return  new House(number1,flatCount,floorCount);
+        int flatCount = (int) (1 + Math.random() * 5);
+        int floorCount = (int) (1 + Math.random() * 24);
+        return new House(number1, flatCount, floorCount);
     }
-    public static House houseEmpty(){
+
+    public static House houseEmpty() {
         return new House();
     }
 }

@@ -33,7 +33,7 @@ public class FlatBuilder {
         this.floor = floor;
     }
 
-    public static Flat flatEmpty(){
+    public static Flat flatEmpty() {
         return new Flat();
     }
 
