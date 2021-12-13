@@ -1,14 +1,11 @@
-package database;
+package database.houseRepo;
 
-import model.Flat;
+import database.Configs;
 import model.House;
-import services.HouseService;
 
 import java.sql.*;
 
-
-public class DatabaseHandler extends Configs {
-
+public class HouseDatabaseHandler extends Configs {
     Connection dbConnection;
 
     public Connection getDBConnection() throws ClassNotFoundException, SQLException {
@@ -28,28 +25,12 @@ public class DatabaseHandler extends Configs {
 
     public void WriteHouse(House house) {
 
-        String insert = "INSERT INTO" + Const.HOUSE_TABLE + "(" + Const.HOUSE_NUMBER + "," + Const.HOUSE_FLOORS + "," + Const.HOUSE_FLATS + ")" + "VALUES(?,?,?)";
+        String insert = "INSERT INTO" + HouseConst.HOUSE_TABLE + "(" + HouseConst.HOUSE_NUMBER + "," + HouseConst.HOUSE_FLOORS + "," + HouseConst.HOUSE_FLATS + ")" + "VALUES(?,?,?)";
         try {
             PreparedStatement prSt = getDBConnection().prepareStatement(insert);
             prSt.setInt(1, house.getNumber());
             prSt.setInt(2, house.getFloorCount());
             prSt.setInt(3, house.getFlatCount());
-            prSt.executeUpdate();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void WriteFlat(Flat flat) {
-
-        String insert = "INSERT INTO" + Const.FLAT_TABLE + "(" + Const.FLAT_NUMBER + "," + Const.FLAT_FLOOR + "," + Const.FLAT_ROOMS + "," + Const.FLAT_RESIDENTS + "," + Const.FLAT_SQUARE + "VALUES(?,?,?,?,?)";
-        try {
-            PreparedStatement prSt = getDBConnection().prepareStatement(insert);
-            prSt.setInt(1, flat.getNumber());
-            prSt.setInt(2, flat.getFloor());
-            prSt.setInt(3, flat.getCountRooms());
-            prSt.setInt(4, flat.getResidents());
-            prSt.setInt(5, flat.getSquare());
             prSt.executeUpdate();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
