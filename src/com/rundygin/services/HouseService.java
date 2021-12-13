@@ -1,6 +1,5 @@
 package services;
 
-import model.Flat;
 import model.House;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,7 +9,7 @@ import java.util.Objects;
 public class HouseService extends House {
 
     public static String getComparison(int x, int y) {
-        switch (Integer.compare(x,y)) {
+        switch (Integer.compare(x, y)) {
             case 1 -> {
                 return ">";
             }
@@ -24,7 +23,7 @@ public class HouseService extends House {
         return "";
     }
 
-    public static void compareBy(@NotNull House house1,House house2) {
+    public static boolean compareBy(@NotNull House house1, House house2) {
         System.out.println("House№1      House№2");
         String sign = new String("");
 
@@ -43,27 +42,34 @@ public class HouseService extends House {
         int squareOne = countSquare(house1);
         int squareTwo = countSquare(house2);
         System.out.println("Total area");
-        sign = getComparison(squareOne,squareTwo);
+        sign = getComparison(squareOne, squareTwo);
         System.out.println("     " + sign);
+        return true;
     }
-    public int calcSquareOfHouse(ArrayList<House> houses, int numberOfHouse){
+
+    public int calcSquareOfHouse(ArrayList<House> houses, int numberOfHouse) {
         double square = 0;
         House house = null;
-        for (House i: houses){
-            if (i.getNumber() ==numberOfHouse){ house = i;}
+        for (House i : houses) {
+            if (i.getNumber() == numberOfHouse) {
+                house = i;
+            }
         }
-        for(int i = 0; i < Objects.requireNonNull(house).flatCount; ++i){
+        for (int i = 0; i < Objects.requireNonNull(house).flatCount; ++i) {
             square += flats.get(i).getSquare();
         }
         return (int) square;
     }
-    public int calcNumberOfResidents(ArrayList<House> houses, int numberOfHouse){
+
+    public int calcNumberOfResidents(ArrayList<House> houses, int numberOfHouse) {
         double residents = 0;
         House house = null;
-        for (House i: houses){
-            if (i.getNumber() ==numberOfHouse){ house = i;}
+        for (House i : houses) {
+            if (i.getNumber() == numberOfHouse) {
+                house = i;
+            }
         }
-        for(int i = 0; i < Objects.requireNonNull(house).flatCount; ++i){
+        for (int i = 0; i < Objects.requireNonNull(house).flatCount; ++i) {
             residents += flats.get(i).getResidents();
         }
         return (int) residents;

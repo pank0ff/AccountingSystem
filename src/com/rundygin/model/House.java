@@ -16,11 +16,12 @@ public class House {
     public int flatCount;
     public int floorCount;
     protected int square;
-    protected  int residents;
-    protected ArrayList<Flat> flats = new ArrayList<>();
+    protected int residents;
+    public ArrayList<Flat> flats = new ArrayList<>();
 
-    public House(){
-     }
+    public House() {
+    }
+
     public House(int number, int flatCount, int floorCount) {
         this.number = number;
         this.flatCount = flatCount;
@@ -101,24 +102,30 @@ public class House {
         }
         return result;
     }
-    public int calcSquareOfHouse(ArrayList<House> houses, int numberOfHouse){
+
+    public int calcSquareOfHouse(ArrayList<House> houses, int numberOfHouse) {
         double square = 0;
         House house = null;
-        for (House i: houses){
-            if (i.getNumber() ==numberOfHouse){ house = i;}
+        for (House i : houses) {
+            if (i.getNumber() == numberOfHouse) {
+                house = i;
+            }
         }
-        for(int i = 0; i < Objects.requireNonNull(house).flatCount; ++i){
+        for (int i = 0; i < Objects.requireNonNull(house).flatCount; ++i) {
             square += flats.get(i).getSquare();
         }
         return (int) square;
     }
-    public int calcNumberOfResidents(ArrayList<House> houses, int numberOfHouse){
+
+    public int calcNumberOfResidents(ArrayList<House> houses, int numberOfHouse) {
         double residents = 0;
         House house = null;
-        for (House i: houses){
-            if (i.getNumber() ==numberOfHouse){ house = i;}
+        for (House i : houses) {
+            if (i.getNumber() == numberOfHouse) {
+                house = i;
+            }
         }
-        for(int i = 0; i < Objects.requireNonNull(house).flatCount; ++i){
+        for (int i = 0; i < Objects.requireNonNull(house).flatCount; ++i) {
             residents += flats.get(i).getResidents();
         }
         return (int) residents;

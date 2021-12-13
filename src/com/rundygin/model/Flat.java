@@ -3,6 +3,7 @@ package model;
 import java.util.Objects;
 import java.util.Scanner;
 
+
 public class Flat {
 
     public int square;
@@ -10,14 +11,16 @@ public class Flat {
     public int countRooms;
     public int number;
     public int floor;
+    public int houseNumber;
 
-    public Flat(){}
+    public Flat() {
+    }
 
     public Flat(int square, int residents, int countRooms, int number, int floor) {
         this.number = number;
         this.floor = floor;
         this.square = square;
-        this.countRooms = countRooms ;
+        this.countRooms = countRooms;
         this.residents = residents;
         System.out.println("Flat added successfully with options");
         System.out.println("number              " + this.number);
@@ -45,6 +48,11 @@ public class Flat {
 
     public int getCountRooms() {
         return this.countRooms;
+    }
+
+    public int getHouseNumber(House house) {
+        houseNumber = house.getNumber();
+        return houseNumber;
     }
 
     public void setCountRooms(int countRooms) {

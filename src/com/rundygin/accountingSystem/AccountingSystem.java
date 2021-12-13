@@ -1,4 +1,5 @@
 package accountingSystem;
+
 import builders.HouseBuilder;
 import model.Flat;
 import model.House;
@@ -13,47 +14,48 @@ import static builders.FlatBuilder.*;
 import static builders.HouseBuilder.*;
 
 public class AccountingSystem {
-    public final ArrayList<House> house = new ArrayList<>();
+    public static final ArrayList<House> house = new ArrayList<>();
 
     Scanner input = new Scanner(System.in);
-    public House findHouseByNumber(int number) {
+
+    public static House findHouseByNumber(int number) {
         for (House i : house) {
             if (i.getNumber() == number) {
-                return  i;
+                return i;
             }
         }
         HouseBuilder.houseEmpty().setFlatCount(-1);
-        return  HouseBuilder.houseEmpty();
+        return HouseBuilder.houseEmpty();
     }
 
-    public void addEmptyHouse(int numberOfHouse,int flatCount,int floorCount) {
-        for (House i : this.house) {
+    public void addEmptyHouse(int numberOfHouse, int flatCount, int floorCount) {
+        for (House i : house) {
             if (i.getNumber() == numberOfHouse) {
                 System.out.println("A house with this number exists :(");
                 return;
             }
         }
-        House house = houseDefault(numberOfHouse,flatCount,floorCount);
-        this.house.add(house);
+        House house = houseDefault(numberOfHouse, flatCount, floorCount);
+        AccountingSystem.house.add(house);
         System.out.println("House added successfully :)");
     }
 
     public void addHouseAutomatically() {
-        int numberOfHouse = (int) (1 + Math.random() * 10+Math.random()*10+Math.random()*5);
-        for (House i : this.house) {
+        int numberOfHouse = (int) (1 + Math.random() * 10 + Math.random() * 10 + Math.random() * 5);
+        for (House i : house) {
             if (i.getNumber() == numberOfHouse) {
-                System.out.println("A house with this number exists :(");
+                System.out.println("try again :(");
                 return;
             }
         }
         House house = houseAuto(numberOfHouse);
         this.house.add(house);
-        for (int i = 0; i <house.flatCount; i++) {
+        for (int i = 0; i < house.flatCount; i++) {
             addFlatAutomatically(numberOfHouse);
         }
     }
 
-    public void addFlat(int numberOfHouse,int square,int residents,int countRooms,int number,int floor) {
+    public void addFlat(int numberOfHouse, int square, int residents, int countRooms, int number, int floor) {
         House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no house with this number. :(");
@@ -67,7 +69,7 @@ public class AccountingSystem {
     public void addFlatAutomatically(int numberOfHouse) {
         House temp = findHouseByNumber(numberOfHouse);
         int number = 0;
-        for (House i : this.house) {
+        for (House i : house) {
             if (i.getNumber() == numberOfHouse) {
                 break;
             }
@@ -84,7 +86,7 @@ public class AccountingSystem {
         }
     }
 
-    public void removeHouse(int numberOfHouse) {
+    public static void removeHouse(int numberOfHouse) {
         House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no such house :(");
@@ -124,16 +126,16 @@ public class AccountingSystem {
             System.out.println("There is no such house :(");
             return;
         }
-        Flat flat2 =  findFlatByNumber(house2, numberOfFlat2);
+        Flat flat2 = findFlatByNumber(house2, numberOfFlat2);
         if (flat2.getNumber() == -1) {
             System.out.println("There is no such flat :(");
             return;
         }
-        FlatService.compareBy(flat1,flat2);
+        FlatService.compareBy(flat1, flat2);
     }
 
     public void compareHouse(int numberOfHouseOne, int numberOfHouseTwo) {
-        House houseOne =  findHouseByNumber(numberOfHouseOne);
+        House houseOne = findHouseByNumber(numberOfHouseOne);
         if (houseOne.getFlatCount() == -1) {
             System.out.println("This house does not exist :(");
             return;
@@ -143,13 +145,13 @@ public class AccountingSystem {
             System.out.println("This house does not exist :(");
             return;
         }
-        HouseService.compareBy(houseOne,houseTwo);
+        HouseService.compareBy(houseOne, houseTwo);
     }
 
-    public Flat findFlatByNumber(@NotNull House house, int number) {
+    public static Flat findFlatByNumber(@NotNull House house, int number) {
         for (Flat i : house.getFlat()) {
             if (i.getNumber() == number) {
-                return  i;
+                return i;
             }
         }
         Flat temp = new Flat();
@@ -163,7 +165,7 @@ public class AccountingSystem {
             System.out.println("There is no such house :(");
             return;
         }
-        Flat temp2 =  temp.getFlat(numberOfApartment);
+        Flat temp2 = temp.getFlat(numberOfApartment);
         if (temp.getNumber() == -1) {
             System.out.println("Such an flat does not exist :(");
             return;
@@ -172,7 +174,7 @@ public class AccountingSystem {
     }
 
     public void getHouseInformation(int number) {
-        House temp =  findHouseByNumber(number);
+        House temp = findHouseByNumber(number);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no such house :(");
             return;
@@ -191,41 +193,39 @@ public class AccountingSystem {
         }
     }
 
-    public void changeFlat() {
-        if(house.size()!=0) {
-            int index1 = 0;
-            int index2 = 0;
-            int index3 = 0;
+    public void changeFlat(int houseNumber, int flatNumber, int square, int residentsCount) {
+        if (house.size() != 0) {
+            int index1 = flatNumber;
+            int index2 = square;
+            int index3 = residentsCount;
             int index0 = 0;
-            System.out.print("Enter the house number, please :) ");
-            int index11 = input.nextInt();;
+            int index11 = houseNumber;
+
+
             while (index11 <= 0) {
                 System.out.print("There are no such ");
                 index11 = input.nextInt();
             }
-
-            for (House i : house){
-                if (i.getNumber() == index11){
+            for (House i : house) {
+                if (i.getNumber() == index11) {
                     break;
                 }
                 index0++;
             }
-            System.out.print("\nEnter the apartment , please :) ");
-            index1 =  input.nextInt();
-
-
-            System.out.print("\nEnter a new area, please :) ");
-            index2 =  input.nextInt();
-            System.out.print("\nEnter the number of new residents , please :)");
-            index3 =  input.nextInt();
+            int oldSquare = house.get(index0).getFlat(index1).getSquare();
+            int oldNumberResidents = house.get(index0).getFlat(index1).getResidents();
 
             house.get(index0).getFlat(index1).setSquare(index2);
             house.get(index0).getFlat(index1).setResidents(index3);
 
-            house.get(index0).setSquare(house.get(index0).calcSquareOfHouse(house,index11));
-            house.get(index0).setResidents(house.get(index0 ).calcNumberOfResidents(house,index11));
-        }
-        else  System.out.println("empty :(\n");
+            house.get(index0).setSquare(house.get(index0).calcSquareOfHouse(house, index11));
+            house.get(index0).setResidents(house.get(index0).calcNumberOfResidents(house, index11));
+            int areaDifference =Math.abs(index2 - oldSquare);
+            int differenceOfResidents =Math.abs(index3 - oldNumberResidents);
+            System.out.println("Changes applied");
+            System.out.println("New square: " + index2 + ".Square changed to " + areaDifference);
+            System.out.println("New number of residents: " + index3 + ".Number of residents changed to " + differenceOfResidents);
+        } else System.out.println("empty :(\n");
     }
 }
 
