@@ -44,7 +44,7 @@ public class AccountingSystem {
         int numberOfHouse = (int) (1 + Math.random() * 10 + Math.random() * 10 + Math.random() * 5);
         for (House i : house) {
             if (i.getNumber() == numberOfHouse) {
-                System.out.println("A house with this number exists :(");
+                System.out.println("try again :(");
                 return;
             }
         }
@@ -193,40 +193,38 @@ public class AccountingSystem {
         }
     }
 
-    public void changeFlat() {
+    public void changeFlat(int houseNumber, int flatNumber, int square, int residentsCount) {
         if (house.size() != 0) {
-            int index1 = 0;
-            int index2 = 0;
-            int index3 = 0;
+            int index1 = flatNumber;
+            int index2 = square;
+            int index3 = residentsCount;
             int index0 = 0;
-            System.out.print("Enter the house number, please :) ");
-            int index11 = input.nextInt();
-            ;
+            int index11 = houseNumber;
+
+
             while (index11 <= 0) {
                 System.out.print("There are no such ");
                 index11 = input.nextInt();
             }
-
             for (House i : house) {
                 if (i.getNumber() == index11) {
                     break;
                 }
                 index0++;
             }
-            System.out.print("\nEnter the apartment , please :) ");
-            index1 = input.nextInt();
-
-
-            System.out.print("\nEnter a new area, please :) ");
-            index2 = input.nextInt();
-            System.out.print("\nEnter the number of new residents , please :)");
-            index3 = input.nextInt();
+            int oldSquare = house.get(index0).getFlat(index1).getSquare();
+            int oldNumberResidents = house.get(index0).getFlat(index1).getResidents();
 
             house.get(index0).getFlat(index1).setSquare(index2);
             house.get(index0).getFlat(index1).setResidents(index3);
 
             house.get(index0).setSquare(house.get(index0).calcSquareOfHouse(house, index11));
             house.get(index0).setResidents(house.get(index0).calcNumberOfResidents(house, index11));
+            int areaDifference =Math.abs(index2 - oldSquare);
+            int differenceOfResidents =Math.abs(index3 - oldNumberResidents);
+            System.out.println("Changes applied");
+            System.out.println("New square: " + index2 + ".Square changed to " + areaDifference);
+            System.out.println("New number of residents: " + index3 + ".Number of residents changed to " + differenceOfResidents);
         } else System.out.println("empty :(\n");
     }
 }

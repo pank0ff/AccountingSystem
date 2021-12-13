@@ -17,7 +17,7 @@ public class House {
     public int floorCount;
     protected int square;
     protected int residents;
-    protected ArrayList<Flat> flats = new ArrayList<>();
+    public ArrayList<Flat> flats = new ArrayList<>();
 
     public House() {
     }

@@ -76,7 +76,15 @@ public class UserInterface {
                             accountingSystem.addHouseAutomatically();
                         }
                         case 5 -> {
-                            accountingSystem.changeFlat();
+                            System.out.print("Enter the house number, please :) ");
+                            int houseNumber = input.nextInt();
+                            System.out.print("\nEnter the flat , please :) ");
+                            int flatNumber = input.nextInt();
+                            System.out.print("\nEnter a new square, please :) ");
+                            int square = input.nextInt();
+                            System.out.print("\nEnter the number of new residents , please :)");
+                            int residentsCount = input.nextInt();
+                            accountingSystem.changeFlat(houseNumber,flatNumber,square,residentsCount);
                         }
                         case 6 -> {
                             System.out.println("Enter house number,please :)");

@@ -18,7 +18,7 @@ public class FlatService extends model.Flat {
         System.out.println("flat" + flat1.number + sign + "flat" + flatNumber);
     }
 
-    public static void compareBy(@NotNull Flat flat1, Flat flat2) {
+    public static boolean compareBy( Flat flat1, Flat flat2) {
         new String("");
         System.out.println("Square :");
         String sign = getSign(flat1.square, flat2.square);
@@ -35,6 +35,7 @@ public class FlatService extends model.Flat {
         System.out.println("Floor:");
         sign = getSign(flat1.floor, flat2.floor);
         printCompareResult(sign, flat1, flat2.number);
+        return true;
     }
 
     public static void printInfo(Flat flat) {

@@ -1,6 +1,5 @@
 package services;
 
-import model.Flat;
 import model.House;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +23,7 @@ public class HouseService extends House {
         return "";
     }
 
-    public static void compareBy(@NotNull House house1, House house2) {
+    public static boolean compareBy(@NotNull House house1, House house2) {
         System.out.println("House№1      House№2");
         String sign = new String("");
 
@@ -45,6 +44,7 @@ public class HouseService extends House {
         System.out.println("Total area");
         sign = getComparison(squareOne, squareTwo);
         System.out.println("     " + sign);
+        return true;
     }
 
     public int calcSquareOfHouse(ArrayList<House> houses, int numberOfHouse) {
