@@ -2,6 +2,9 @@ package interfaces;
 
 import accountingSystem.AccountingSystem;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -122,6 +125,14 @@ public class UserInterface {
                             showMenu();
                         }
                         case 13 -> {
+                            try {
+                                FileWriter fileWriter = new FileWriter("log.txt",true);
+                                Date date = new Date();
+                                fileWriter.write(date+"\n"+"EXIT THE APPLICATION \n\n");
+                                fileWriter.flush();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                             isAllGood = false;
                         }
                         default -> System.out.println("You entered a non-existent command, unfortunately, we cannot help you in any way :((((");

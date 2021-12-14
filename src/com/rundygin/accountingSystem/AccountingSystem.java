@@ -7,6 +7,8 @@ import org.jetbrains.annotations.NotNull;
 import services.FlatService;
 import services.HouseService;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.*;
 
@@ -16,15 +18,40 @@ import static builders.HouseBuilder.*;
 public class AccountingSystem {
     public static final ArrayList<House> house = new ArrayList<>();
 
+    FileWriter fileWriter;
+
+    {
+        try {
+            fileWriter = new FileWriter("log.txt",true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     Scanner input = new Scanner(System.in);
 
     public static House findHouseByNumber(int number) {
         for (House i : house) {
             if (i.getNumber() == number) {
+                try {
+                    FileWriter fileWriter = new FileWriter("log.txt",true);
+                    Date date = new Date();
+                    fileWriter.write(date+"\n"+"The house with the number " + number + " was found.\n");
+                    fileWriter.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 return i;
             }
         }
         HouseBuilder.houseEmpty().setFlatCount(-1);
+        try {
+            FileWriter fileWriter = new FileWriter("log.txt",true);
+            Date date = new Date();
+            fileWriter.write(date+"\n"+"The house with the number " + number + " was not found. An empty house with a number "+number+" has been created.\n");
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return HouseBuilder.houseEmpty();
     }
 
@@ -32,11 +59,27 @@ public class AccountingSystem {
         for (House i : house) {
             if (i.getNumber() == numberOfHouse) {
                 System.out.println("A house with this number exists :(");
+                try {
+                    FileWriter fileWriter = new FileWriter("log.txt",true);
+                    Date date = new Date();
+                    fileWriter.write(date+"\n"+"An attempt to create an empty house, but with number "+numberOfHouse+ " is already there\n");
+                    fileWriter.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 return;
             }
         }
         House house = houseDefault(numberOfHouse, flatCount, floorCount);
         AccountingSystem.house.add(house);
+        try {
+            FileWriter fileWriter = new FileWriter("log.txt",true);
+            Date date = new Date();
+            fileWriter.write(date+"\n"+"Added empty house with parameters:number - "+numberOfHouse+",flat number - "+flatCount+",floor number - "+floorCount+"\n");
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("House added successfully :)");
     }
 
@@ -53,16 +96,40 @@ public class AccountingSystem {
         for (int i = 0; i < house.flatCount; i++) {
             addFlatAutomatically(numberOfHouse);
         }
+        try {
+            FileWriter fileWriter = new FileWriter("log.txt",true);
+            Date date = new Date();
+            fileWriter.write(date+"\n"+"Added auto house with parameters:number - "+numberOfHouse+",flat number - "+house.getFlatCount()+",floor number - "+house.getFloorCount()+"\n");
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addFlat(int numberOfHouse, int square, int residents, int countRooms, int number, int floor) {
         House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no house with this number. :(");
+            try {
+                FileWriter fileWriter = new FileWriter("log.txt",true);
+                Date date = new Date();
+                fileWriter.write(date+"\n"+"An attempt was made to add an apartment, but house number "+numberOfHouse+" does not exist\n");
+                fileWriter.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             Flat tempFlat = flatDefault(square, residents, countRooms, number, floor);
             temp.addFlat(tempFlat);
             System.out.println("in " + numberOfHouse + " house");
+            try {
+                FileWriter fileWriter = new FileWriter("log.txt",true);
+                Date date = new Date();
+                fileWriter.write(date+"\n"+"Added apartment to house number "+numberOfHouse+" with the following parameters:number of flat - " + tempFlat.getNumber()+",floor - " + tempFlat.getFloor()+",square - "+tempFlat.square+",number of rooms - "+tempFlat.getCountRooms()+",number of residents - " + tempFlat.getResidents()+"\n");
+                fileWriter.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -79,10 +146,26 @@ public class AccountingSystem {
 
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no house with this number. :(");
+            try {
+                FileWriter fileWriter = new FileWriter("log.txt",true);
+                Date date = new Date();
+                fileWriter.write(date+"\n"+"An attempt to create an auto flat, but with number "+numberOfHouse+ " is not exist\n");
+                fileWriter.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             Flat tempFlat = flatAuto(house);
             temp.addFlat(tempFlat);
             System.out.println("Flat added successfully :)");
+            try {
+                FileWriter fileWriter = new FileWriter("log.txt",true);
+                Date date = new Date();
+                fileWriter.write(date+"\n"+"Added apartment to house number "+numberOfHouse+" with the following parameters:number of flat - " + tempFlat.getNumber()+",floor - " + tempFlat.getFloor()+",square - "+tempFlat.square+",number of rooms - "+tempFlat.getCountRooms()+",number of residents - " + tempFlat.getResidents()+"\n");
+                fileWriter.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -90,23 +173,63 @@ public class AccountingSystem {
         House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no such house :(");
+            try {
+                FileWriter fileWriter = new FileWriter("log.txt",true);
+                Date date = new Date();
+                fileWriter.write(date+"\n"+"An attempt to remove an house, but with number "+numberOfHouse+ " is not exist\n");
+                fileWriter.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return;
         }
         house.remove(temp);
+        try {
+            FileWriter fileWriter = new FileWriter("log.txt",true);
+            Date date = new Date();
+            fileWriter.write(date+"\n"+"Remove house with number "+numberOfHouse+ "\n");
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void removeFlat(int numberOfHouse, int numberOfFlat) {
         House temp = findHouseByNumber(numberOfHouse);
         if (temp.getFlatCount() == -1) {
             System.out.println("There is no such house :(");
+            try {
+                FileWriter fileWriter = new FileWriter("log.txt",true);
+                Date date = new Date();
+                fileWriter.write(date+"\n"+"An attempt to remove an flat, but with number "+numberOfHouse+ " is not exist\n");
+                fileWriter.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return;
         }
         Flat temp1 = findFlatByNumber(temp, numberOfFlat);
         if (temp1.getNumber() == -1) {
             System.out.println("There is no such flat :(");
+            try {
+                FileWriter fileWriter = new FileWriter("log.txt",true);
+                Date date = new Date();
+                fileWriter.write(date+"\n"+"An attempt to remove an flat, but flat with number "+numberOfFlat+ " is not exist\n");
+                fileWriter.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return;
         }
         temp.removeFlat(temp1);
+        try {
+            FileWriter fileWriter = new FileWriter("log.txt",true);
+            Date date = new Date();
+            fileWriter.write(date+"\n"+"Remove flat with number "+temp1.getNumber()+ " in house with number "+numberOfHouse+" \n");
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void compareFlat(int numberOfHouse1, int numberOfHouse2, int numberOfFlat1, int numberOfFlat2) {
@@ -220,11 +343,19 @@ public class AccountingSystem {
 
             house.get(index0).setSquare(house.get(index0).calcSquareOfHouse(house, index11));
             house.get(index0).setResidents(house.get(index0).calcNumberOfResidents(house, index11));
-            int areaDifference =Math.abs(index2 - oldSquare);
-            int differenceOfResidents =Math.abs(index3 - oldNumberResidents);
+            int areaDifference = Math.abs(index2 - oldSquare);
+            int differenceOfResidents = Math.abs(index3 - oldNumberResidents);
             System.out.println("Changes applied");
             System.out.println("New square: " + index2 + ".Square changed to " + areaDifference);
             System.out.println("New number of residents: " + index3 + ".Number of residents changed to " + differenceOfResidents);
+            try {
+                FileWriter fileWriter = new FileWriter("log.txt",true);
+                Date date = new Date();
+                fileWriter.write(date+"\n"+"Flat number"+ index1 +" in house "+index11+" has been changed. Parameters have changed:square - it was: "+oldSquare+",became: "+index2+",number of residents - it was: "+oldNumberResidents+",became: "+index3+"\n");
+                fileWriter.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else System.out.println("empty :(\n");
     }
 }
