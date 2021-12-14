@@ -18,15 +18,6 @@ import static builders.HouseBuilder.*;
 public class AccountingSystem {
     public static final ArrayList<House> house = new ArrayList<>();
 
-    FileWriter fileWriter;
-
-    {
-        try {
-            fileWriter = new FileWriter("log.txt",true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     Scanner input = new Scanner(System.in);
 
     public static House findHouseByNumber(int number) {
@@ -35,7 +26,7 @@ public class AccountingSystem {
                 try {
                     FileWriter fileWriter = new FileWriter("log.txt",true);
                     Date date = new Date();
-                    fileWriter.write(date+"\n"+"The house with the number " + number + " was found.\n");
+                    fileWriter.write("\n"+date+"\n"+"The house with the number " + number + " was found.\n");
                     fileWriter.flush();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -47,7 +38,7 @@ public class AccountingSystem {
         try {
             FileWriter fileWriter = new FileWriter("log.txt",true);
             Date date = new Date();
-            fileWriter.write(date+"\n"+"The house with the number " + number + " was not found. An empty house with a number "+number+" has been created.\n");
+            fileWriter.write("\n"+date+"\n"+"The house with the number " + number + " was not found. An empty house with a number "+HouseBuilder.houseEmpty().getNumber()+" has been created.\n");
             fileWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -62,7 +53,7 @@ public class AccountingSystem {
                 try {
                     FileWriter fileWriter = new FileWriter("log.txt",true);
                     Date date = new Date();
-                    fileWriter.write(date+"\n"+"An attempt to create an empty house, but with number "+numberOfHouse+ " is already there\n");
+                    fileWriter.write("\n"+date+"\n"+"An attempt to create an empty house, but with number "+numberOfHouse+ " is already there\n");
                     fileWriter.flush();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -75,7 +66,7 @@ public class AccountingSystem {
         try {
             FileWriter fileWriter = new FileWriter("log.txt",true);
             Date date = new Date();
-            fileWriter.write(date+"\n"+"Added empty house with parameters:number - "+numberOfHouse+",flat number - "+flatCount+",floor number - "+floorCount+"\n");
+            fileWriter.write("\n"+date+"\n"+"Added empty house with parameters:number - "+numberOfHouse+",flat number - "+flatCount+",floor number - "+floorCount+"\n");
             fileWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -99,7 +90,7 @@ public class AccountingSystem {
         try {
             FileWriter fileWriter = new FileWriter("log.txt",true);
             Date date = new Date();
-            fileWriter.write(date+"\n"+"Added auto house with parameters:number - "+numberOfHouse+",flat number - "+house.getFlatCount()+",floor number - "+house.getFloorCount()+"\n");
+            fileWriter.write("\n"+date+"\n"+"Added auto house with parameters:number - "+numberOfHouse+",flat number - "+house.getFlatCount()+",floor number - "+house.getFloorCount()+"\n");
             fileWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -113,7 +104,7 @@ public class AccountingSystem {
             try {
                 FileWriter fileWriter = new FileWriter("log.txt",true);
                 Date date = new Date();
-                fileWriter.write(date+"\n"+"An attempt was made to add an apartment, but house number "+numberOfHouse+" does not exist\n");
+                fileWriter.write("\n"+date+"\n"+"An attempt was made to add an apartment, but house number "+numberOfHouse+" does not exist\n");
                 fileWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -125,7 +116,7 @@ public class AccountingSystem {
             try {
                 FileWriter fileWriter = new FileWriter("log.txt",true);
                 Date date = new Date();
-                fileWriter.write(date+"\n"+"Added apartment to house number "+numberOfHouse+" with the following parameters:number of flat - " + tempFlat.getNumber()+",floor - " + tempFlat.getFloor()+",square - "+tempFlat.square+",number of rooms - "+tempFlat.getCountRooms()+",number of residents - " + tempFlat.getResidents()+"\n");
+                fileWriter.write("\n"+date+"\n"+"Added apartment to house number "+numberOfHouse+" with the following parameters:number of flat - " + tempFlat.getNumber()+",floor - " + tempFlat.getFloor()+",square - "+tempFlat.square+",number of rooms - "+tempFlat.getCountRooms()+",number of residents - " + tempFlat.getResidents()+"\n");
                 fileWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -149,7 +140,7 @@ public class AccountingSystem {
             try {
                 FileWriter fileWriter = new FileWriter("log.txt",true);
                 Date date = new Date();
-                fileWriter.write(date+"\n"+"An attempt to create an auto flat, but with number "+numberOfHouse+ " is not exist\n");
+                fileWriter.write("\n"+date+"\n"+"An attempt to create an auto flat, but with number "+numberOfHouse+ " is not exist\n");
                 fileWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -161,7 +152,7 @@ public class AccountingSystem {
             try {
                 FileWriter fileWriter = new FileWriter("log.txt",true);
                 Date date = new Date();
-                fileWriter.write(date+"\n"+"Added apartment to house number "+numberOfHouse+" with the following parameters:number of flat - " + tempFlat.getNumber()+",floor - " + tempFlat.getFloor()+",square - "+tempFlat.square+",number of rooms - "+tempFlat.getCountRooms()+",number of residents - " + tempFlat.getResidents()+"\n");
+                fileWriter.write("\n"+date+"\n"+"Added apartment to house number "+numberOfHouse+" with the following parameters:number of flat - " + tempFlat.getNumber()+",floor - " + tempFlat.getFloor()+",square - "+tempFlat.square+",number of rooms - "+tempFlat.getCountRooms()+",number of residents - " + tempFlat.getResidents()+"\n");
                 fileWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -176,7 +167,7 @@ public class AccountingSystem {
             try {
                 FileWriter fileWriter = new FileWriter("log.txt",true);
                 Date date = new Date();
-                fileWriter.write(date+"\n"+"An attempt to remove an house, but with number "+numberOfHouse+ " is not exist\n");
+                fileWriter.write("\n"+date+"\n"+"An attempt to remove an house, but with number "+numberOfHouse+ " is not exist\n");
                 fileWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -187,7 +178,7 @@ public class AccountingSystem {
         try {
             FileWriter fileWriter = new FileWriter("log.txt",true);
             Date date = new Date();
-            fileWriter.write(date+"\n"+"Remove house with number "+numberOfHouse+ "\n");
+            fileWriter.write("\n"+date+"\n"+"Remove house with number "+numberOfHouse+ "\n");
             fileWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -201,7 +192,7 @@ public class AccountingSystem {
             try {
                 FileWriter fileWriter = new FileWriter("log.txt",true);
                 Date date = new Date();
-                fileWriter.write(date+"\n"+"An attempt to remove an flat, but with number "+numberOfHouse+ " is not exist\n");
+                fileWriter.write("\n"+date+"\n"+"An attempt to remove an flat, but with number "+numberOfHouse+ " is not exist\n");
                 fileWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -214,7 +205,7 @@ public class AccountingSystem {
             try {
                 FileWriter fileWriter = new FileWriter("log.txt",true);
                 Date date = new Date();
-                fileWriter.write(date+"\n"+"An attempt to remove an flat, but flat with number "+numberOfFlat+ " is not exist\n");
+                fileWriter.write("\n"+date+"\n"+"An attempt to remove an flat, but flat with number "+numberOfFlat+ " is not exist\n");
                 fileWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -225,7 +216,7 @@ public class AccountingSystem {
         try {
             FileWriter fileWriter = new FileWriter("log.txt",true);
             Date date = new Date();
-            fileWriter.write(date+"\n"+"Remove flat with number "+temp1.getNumber()+ " in house with number "+numberOfHouse+" \n");
+            fileWriter.write("\n"+date+"\n"+"Remove flat with number "+temp1.getNumber()+ " in house with number "+numberOfHouse+" \n");
             fileWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
@@ -274,11 +265,27 @@ public class AccountingSystem {
     public static Flat findFlatByNumber(@NotNull House house, int number) {
         for (Flat i : house.getFlat()) {
             if (i.getNumber() == number) {
+                try {
+                    FileWriter fileWriter = new FileWriter("log.txt",true);
+                    Date date = new Date();
+                    fileWriter.write("\n"+date+"\n"+"The flat with the number " + number + " was found.\n");
+                    fileWriter.flush();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 return i;
             }
         }
         Flat temp = new Flat();
         temp.setNumber(-1);
+        try {
+            FileWriter fileWriter = new FileWriter("log.txt",true);
+            Date date = new Date();
+            fileWriter.write("\n"+date+"\n"+"The flat with the number " + number + " was not found. An flat with a number "+temp.getNumber()+" has been created.\n");
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return temp;
     }
 
@@ -351,7 +358,7 @@ public class AccountingSystem {
             try {
                 FileWriter fileWriter = new FileWriter("log.txt",true);
                 Date date = new Date();
-                fileWriter.write(date+"\n"+"Flat number"+ index1 +" in house "+index11+" has been changed. Parameters have changed:square - it was: "+oldSquare+",became: "+index2+",number of residents - it was: "+oldNumberResidents+",became: "+index3+"\n");
+                fileWriter.write("\n"+date+"\n"+"Flat number "+ index1 +" in house "+index11+" has been changed. Parameters have changed:square - it was: "+oldSquare+",became: "+index2+",number of residents - it was: "+oldNumberResidents+",became: "+index3+"\n");
                 fileWriter.flush();
             } catch (IOException e) {
                 e.printStackTrace();

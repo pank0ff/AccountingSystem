@@ -51,7 +51,7 @@ public class HouseService extends House {
         try {
             FileWriter fileWriter = new FileWriter("log.txt",true);
             Date date = new Date();
-            fileWriter.write(date+"\n"+"comparison of houses numbered " + house1.getNumber() +" and " + house2.getNumber()+" was successful\n");
+            fileWriter.write("\n"+date+"\n"+"comparison of houses numbered " + house1.getNumber() +" and " + house2.getNumber()+" was successful\n");
             fileWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
