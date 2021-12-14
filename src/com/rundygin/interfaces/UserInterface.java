@@ -128,7 +128,7 @@ public class UserInterface {
                             try {
                                 FileWriter fileWriter = new FileWriter("log.txt",true);
                                 Date date = new Date();
-                                fileWriter.write(date+"\n"+"EXIT THE APPLICATION \n\n");
+                                fileWriter.write("\nEXIT THE APPLICATION on "+date+"\n\n");
                                 fileWriter.flush();
                             } catch (IOException e) {
                                 e.printStackTrace();

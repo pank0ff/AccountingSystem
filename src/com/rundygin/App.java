@@ -9,7 +9,7 @@ public class App {
         try {
             FileWriter writer = new FileWriter("log.txt",true);
             Date date = new Date();
-            writer.write("NEW SESSION started on " + date +" :\n\n");
+            writer.write("NEW SESSION started on " + date +" :\n");
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();

@@ -9,16 +9,6 @@ import java.util.Date;
 
 public class FlatService extends model.Flat {
 
-    FileWriter fileWriter;
-
-    {
-        try {
-            fileWriter = new FileWriter("log.txt",true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static String getSign(int x, int y) {
         return switch (Integer.compare(x, y)) {
             case -1 -> "<";
@@ -52,7 +42,7 @@ public class FlatService extends model.Flat {
         try {
             FileWriter fileWriter = new FileWriter("log.txt",true);
             Date date = new Date();
-            fileWriter.write(date+"\n"+"comparison of flats numbered " + flat1.getNumber() +" and " + flat2.getNumber()+" was successful\n");
+            fileWriter.write("\n"+date+"\n"+"comparison of flats numbered " + flat1.getNumber() +" and " + flat2.getNumber()+" was successful\n");
             fileWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
