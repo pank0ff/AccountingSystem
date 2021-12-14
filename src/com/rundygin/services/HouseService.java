@@ -3,10 +3,14 @@ package services;
 import model.House;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 public class HouseService extends House {
+
 
     public static String getComparison(int x, int y) {
         switch (Integer.compare(x, y)) {
@@ -44,6 +48,14 @@ public class HouseService extends House {
         System.out.println("Total area");
         sign = getComparison(squareOne, squareTwo);
         System.out.println("     " + sign);
+        try {
+            FileWriter fileWriter = new FileWriter("log.txt",true);
+            Date date = new Date();
+            fileWriter.write(date+"\n"+"comparison of houses numbered " + house1.getNumber() +" and " + house2.getNumber()+" was successful\n");
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return true;
     }
 

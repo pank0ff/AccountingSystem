@@ -3,7 +3,21 @@ package services;
 import model.Flat;
 import org.jetbrains.annotations.NotNull;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
+
 public class FlatService extends model.Flat {
+
+    FileWriter fileWriter;
+
+    {
+        try {
+            fileWriter = new FileWriter("log.txt",true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static String getSign(int x, int y) {
         return switch (Integer.compare(x, y)) {
@@ -35,6 +49,14 @@ public class FlatService extends model.Flat {
         System.out.println("Floor:");
         sign = getSign(flat1.floor, flat2.floor);
         printCompareResult(sign, flat1, flat2.number);
+        try {
+            FileWriter fileWriter = new FileWriter("log.txt",true);
+            Date date = new Date();
+            fileWriter.write(date+"\n"+"comparison of flats numbered " + flat1.getNumber() +" and " + flat2.getNumber()+" was successful\n");
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return true;
     }
 
